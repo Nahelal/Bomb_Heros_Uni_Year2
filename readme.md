@@ -3,6 +3,9 @@
 ![image](https://media.github.falmouth.ac.uk/user/730/files/73b87175-1b5d-4640-ad4c-497f6c79f7d6)
 *Fig 1, screenshot by author of gameplay from the game 'Bomb it'*
 
+![image](https://media.github.falmouth.ac.uk/user/730/files/76609670-1d78-410b-a438-7e764d526256)
+*Fig 2, screenshot by author of project timeline using a gantt chart*
+
 ## what is it?
 
 An online multiplayer game based on the 2007 game 'bomb it', consisting of 2-4 players who compete to be the last man standing. Involves strategy and having to blow up each other and gain upgrades to get a higher score than your opponent. Scores are saved on the players account, meaning that each time they play, they can risk losing their entire score.
