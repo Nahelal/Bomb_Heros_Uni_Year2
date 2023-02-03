@@ -3,7 +3,7 @@
 
 ## Artifact introduction
  
-My artifact is going to be based around the 2007 game 'Bomb it' __[1]__  with an added networking aspect to make the game online multiplayer instead of local multiplayer. The project is going to be a casual 2-4 player game, where the last player alive wins. The game premise involves collecting upgrades and moving around a 2d topdown map, where the player is placing bombs in order to destroy walls and reach the other players to eliminate them. I am also going to include a player login and scoring system, where the players highscores are kept on their accounts on a database and can be referenced to create a global leaderboard which gives the players an insentive to not only eliminate players, but also to collect the upgrades to improve their own score.
+My artifact is going to be based around the 2007 game 'Bomb it' __[1]__  with an added networking aspect to make the game online multiplayer instead of local multiplayer. The project is going to be a casual 2-4 player game, where the last player alive wins. The game premise involves collecting upgrades and moving around a 2d topdown map, where the player is placing bombs in order to destroy walls and reach the other players to eliminate them. I am going to include a player login and scoring system, where the players highscores are kept on their accounts on a database and can be referenced to create a global leaderboard which gives the players an insentive to not only eliminate players, but also to collect the upgrades to improve their own score.
 
 ![image](https://media.github.falmouth.ac.uk/user/730/files/433bc46d-3e79-4117-9d75-f6ba6a7469bd)
 
@@ -11,7 +11,7 @@ My artifact is going to be based around the 2007 game 'Bomb it' __[1]__  with an
 
 During the development of this project, i aim to look into the affect of casual gaming on reducing stress and improving mood by researching into multiple studies and conducting my own research through the form of a brief questionnare using the 'nine-item Psychological Stress Measure' (PSM-9). The PSM-9 is used to measure levels of stress from the last 4-5 days and was used in similar studies such as by *Veeral Desai et al* __[2]__ before and after the study took place.
 
-In order to keep my arifact in the category of a casual game, i need to ensure my final project is short to play with fast paced games, has simple to learn controls and is easy to learn, and is also widely accessable to appeal to a mass market, to name a few. 
+In order to keep my arifact in the category of a casual game, i need to ensure my final project is short to play with fast paced games, has simple controls and is easy to learn, and is also widely accessable to appeal to a mass market, to name a few. 
 
 ## Specialism links
 
