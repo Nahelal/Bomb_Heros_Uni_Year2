@@ -45,7 +45,7 @@ Prior to this, I am also going to have to look into unreal networking systems mo
 
 ![image](https://media.github.falmouth.ac.uk/user/730/files/4c4c8132-f706-4b3a-afba-bc9f767d6d0a)
  
- *Fig 4, screenshot of unitys mirror library for an online multiplayer game using a user login system, similar to my potential implementation (https://docs.unity.com/relay/en/manual/mirror)*
+ *Fig 5, screenshot of unitys mirror library for an online multiplayer game using a user login system, similar to my potential implementation (https://docs.unity.com/relay/en/manual/mirror)*
 
 In the last week or whilst working on implementing networking features, I am going to work on my technical poster and finalising anything that is still being worked on for the artifact in time for the deadline, as outlined on the gantt chart.
 
