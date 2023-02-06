@@ -98,11 +98,6 @@ defense argument found from research
 research methods, primary and secondaryt research
 structure, references and stuff
 
-
-What it means to be a casual gamer?
-The term casual gaming refers to video games which do not require a major time investment to play, win, and enjoy. A casual gamer is a player who enjoys any video game without investing significant time to it, playing it spontaneously, irregularly, or infrequently
-
-
 .
 
 .
@@ -111,8 +106,6 @@ similar games include 'Bomberman' [2] which is what bomb it is based on. has mon
 https://www.retrogames.cz/play_085-NES.php?language=EN
 
 
-
-google schollar + casual video games
 
 
 ![image](https://media.github.falmouth.ac.uk/user/730/files/744c60a0-5a72-4a25-b4c4-ffa774f26e26)
