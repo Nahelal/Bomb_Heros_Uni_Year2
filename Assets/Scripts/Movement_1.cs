@@ -17,7 +17,7 @@ public class Movement_1 : MonoBehaviour
 
     private void Awake()
     {
-        rigid_body = GetComponent<rigid_body>();
+        rigid_body = GetComponent<Rigidbody2D>();
     }
 
     //player movement set to whatever the corresponding movement keys are for the player
