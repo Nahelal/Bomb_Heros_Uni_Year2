@@ -43,4 +43,13 @@ public class Bomb : MonoBehaviour
         Destroy(bomb);
         bombsLeft = 1;
     }
+
+    private void OnTriggerExit2D(Collider2D bombCheck)
+    {
+        //if player is no longer on top of the bomb, bomb is no longer a trigger and has correct collisions
+        if (bombCheck.gameObject.layer == LayerMask.NameToLayer("Bomb"))
+        {
+            bombCheck.isTrigger = false;
+        }
+    }
 }
