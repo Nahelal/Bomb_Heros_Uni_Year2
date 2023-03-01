@@ -41,5 +41,6 @@ public class Bomb : MonoBehaviour
 
         //testing if works before adding explosions
         Destroy(bomb);
+        bombsLeft = 1;
     }
 }
