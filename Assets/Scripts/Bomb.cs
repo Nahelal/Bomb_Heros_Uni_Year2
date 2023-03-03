@@ -15,9 +15,12 @@ public class Bomb : MonoBehaviour
 
     //references the explosion triggered script to run the anims 
     public ExplosionTriggered explosionPrefab;
+
     //sets base time for explosion to take place, and also the total size of the explosions 
     public float explosionTime = 1f;
     public int explosionLength = 1;
+
+    public LayerMask tilemapLayerCheck;
 
     private void OnEnable()
     {
@@ -55,13 +58,43 @@ public class Bomb : MonoBehaviour
         explosion.SetActiveRenderer(explosion.Centre);
         Destroy(explosion.gameObject, explosionTime);
 
-
+        // explosion goes in the designated direction with the set length from 'explosionLength'
+        Explode(position, Vector2.up, explosionLength);
+        Explode(position, Vector2.down, explosionLength);
+        Explode(position, Vector2.left, explosionLength);
+        Explode(position, Vector2.right, explosionLength);
 
         //testing if works before adding explosions
         Destroy(bomb);
         bombsLeft = 1;
     }
 
+    private void Explode(Vector2 position, Vector2 direction, int length)
+    {
+        // called as many times as 'explosionLength' is set to and extends the explosion 
+        // stops loop if the length of explosion has reached the end
+        if (length <= 0)
+        {
+            return;
+        }
+        // gets new position to continue explosion from, based on where last explosion tile was
+        position += direction;
+
+        //only spawns explosion tiles if there isnt a box collider in the way
+        if (Physics2D.OverlapBox(position, Vector2.one / 2f, 0f, tilemapLayerCheck))
+        {
+            return;
+        }
+
+        // spawns middle section of explosion if 'explosionLength' > 1, else spawns the end sections
+        ExplosionTriggered explosion = Instantiate(explosionPrefab, position, Quaternion.identity);
+        explosion.SetActiveRenderer(length > 1 ? explosion.Middle : explosion.End);
+        explosion.SetDirection(direction);
+        Destroy(explosion.gameObject, explosionTime);
+
+        //reduces explosion size by 1 as each tile is spawned in until 'explosionLength' = 0
+        Explode(position, direction, length - 1);
+    }
 
 
 

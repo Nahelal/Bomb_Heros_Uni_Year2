@@ -296,7 +296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Centre: {fileID: 7190630620900443997}
   Middle: {fileID: 7190630620953675879}
-  End: {fileID: 7190630621432535045}
+  end: {fileID: 7190630621432535045}
 --- !u!1 &7190630621432535051
 GameObject:
   m_ObjectHideFlags: 0

@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 12497797}
   - component: {fileID: 12497796}
   - component: {fileID: 12497798}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Perm_logs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -844,6 +844,9 @@ MonoBehaviour:
     type: 3}
   explosionTime: 1
   explosionLength: 1
+  tilemapLayerCheck:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &371694841
 GameObject:
   m_ObjectHideFlags: 0
@@ -1012,6 +1015,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &546363840 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7190630621432535045, guid: 22737e0bd04d2d146a5ac86dbb68461f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7190630620145196460}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60ea5513d290f9e4e89f62f6aa00341b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &655145376 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7190630620953675879, guid: 22737e0bd04d2d146a5ac86dbb68461f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7190630620145196460}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60ea5513d290f9e4e89f62f6aa00341b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &813852995
 GameObject:
   m_ObjectHideFlags: 0
@@ -1354,7 +1381,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1696361728}
   - component: {fileID: 1696361727}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1403,7 +1430,7 @@ GameObject:
   - component: {fileID: 1733158081}
   - component: {fileID: 1733158080}
   - component: {fileID: 1733158082}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Base_static_map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3906,7 +3933,7 @@ GameObject:
   - component: {fileID: 2121548048}
   - component: {fileID: 2121548047}
   - component: {fileID: 2121548049}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bushes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3968,7 +3995,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -5052,6 +5079,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4361691908710280114, guid: 22737e0bd04d2d146a5ac86dbb68461f,
+        type: 3}
+      propertyPath: end
+      value: 
+      objectReference: {fileID: 546363840}
+    - target: {fileID: -4361691908710280114, guid: 22737e0bd04d2d146a5ac86dbb68461f,
+        type: 3}
+      propertyPath: last
+      value: 
+      objectReference: {fileID: 546363840}
+    - target: {fileID: -4361691908710280114, guid: 22737e0bd04d2d146a5ac86dbb68461f,
+        type: 3}
+      propertyPath: middle
+      value: 
+      objectReference: {fileID: 655145376}
+    - target: {fileID: -4361691908710280114, guid: 22737e0bd04d2d146a5ac86dbb68461f,
+        type: 3}
+      propertyPath: LastBit
+      value: 
+      objectReference: {fileID: 546363840}
+    - target: {fileID: 7190630620900443998, guid: 22737e0bd04d2d146a5ac86dbb68461f,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7190630620953675872, guid: 22737e0bd04d2d146a5ac86dbb68461f,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7190630621308999833, guid: 22737e0bd04d2d146a5ac86dbb68461f,
         type: 3}
       propertyPath: m_Name
@@ -5111,6 +5168,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7190630621432535046, guid: 22737e0bd04d2d146a5ac86dbb68461f,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7190630621432535051, guid: 22737e0bd04d2d146a5ac86dbb68461f,
+        type: 3}
+      propertyPath: m_Name
+      value: end
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22737e0bd04d2d146a5ac86dbb68461f, type: 3}
