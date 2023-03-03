@@ -13,6 +13,12 @@ public class Bomb : MonoBehaviour
 
     public float bombExplodeTime = 3f;
 
+    //references the explosion triggered script to run the anims 
+    public ExplosionTriggered explosionPrefab;
+    //sets base time for explosion to take place, and also the total size of the explosions 
+    public float explosionTime = 1f;
+    public int explosionLength = 1;
+
     private void OnEnable()
     {
         bombsLeft = bombMax;
@@ -39,10 +45,28 @@ public class Bomb : MonoBehaviour
         //waits 3 seconds before continuing to let the bomb explode and do damage
         yield return new WaitForSeconds(bombExplodeTime);
 
+        //gets new position of bomb if it was pushed around the map by the player at all
+        position = bomb.transform.position;
+        position.x = Mathf.Round(position.x);
+        position.y = Mathf.Round(position.y);
+
+        // spawns in the centre piece of the explosion anim sequence where the bomb is currently located on the map
+        ExplosionTriggered explosion = Instantiate(explosionPrefab, position, Quaternion.identity);
+        explosion.SetActiveRenderer(explosion.Centre);
+        Destroy(explosion.gameObject, explosionTime);
+
+
+
         //testing if works before adding explosions
         Destroy(bomb);
         bombsLeft = 1;
     }
+
+
+
+
+
+
 
     private void OnTriggerExit2D(Collider2D bombCheck)
     {

@@ -12,15 +12,15 @@ public class ExplosionTriggered : MonoBehaviour
     public void SetActiveRenderer(ExplosionAnimation renderer)
     {
         // enables either centre, mid, or end depending on which is called
-        Centre = renderer == Centre;
-        Middle = renderer == Middle;
-        End = renderer == End;
+        Centre.enabled = renderer == Centre;
+        Middle.enabled = renderer == Middle;
+        End.enabled =  renderer == End;
     }
 
     public void SetDirection(Vector2 direction)
     {
         //changes direction of the anim to fit where the bomb is and the uncovered areas of map
         float angle = Mathf.Atan2(direction.y, direction.x);
-        transform.rotation = Quaternion.AngleAxis, Vector3.forward);
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 }

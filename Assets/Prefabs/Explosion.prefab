@@ -107,7 +107,7 @@ MonoBehaviour:
   - {fileID: -1408017664, guid: 7423c1d15989d704e950e8090600a779, type: 3}
   - {fileID: -1408328717, guid: 7423c1d15989d704e950e8090600a779, type: 3}
   idleSprite: {fileID: 2106955634, guid: 7423c1d15989d704e950e8090600a779, type: 3}
-  animationFrameTime: 0
+  animationFrameTime: 0.125
   loop: 1
   idle: 0
 --- !u!1 &7190630620953675877
@@ -294,6 +294,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5a584b6d5a49424cb9d79057d7eece5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Centre: {fileID: 7190630620900443997}
+  Middle: {fileID: 7190630620953675879}
+  End: {fileID: 7190630621432535045}
 --- !u!1 &7190630621432535051
 GameObject:
   m_ObjectHideFlags: 0
