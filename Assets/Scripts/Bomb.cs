@@ -92,7 +92,7 @@ public class Bomb : MonoBehaviour
         if (Physics2D.OverlapBox(position, Vector2.one / 2f, 0f, tilemapLayerCheck))
         {
             //destroys bush tile if the explosion touched it 
-            RemoveBush(position);
+            StartCoroutine("RemoveBush");
             return;
         }
 
@@ -106,7 +106,9 @@ public class Bomb : MonoBehaviour
         Explode(position, direction, length - 1);
     }
 
-    private void RemoveBush(Vector2 position)
+
+
+    IEnumerator RemoveBush(Vector2 position)
     {
         Vector3Int squarePos = bushTiles.WorldToCell(position);
         TileBase bush = bushTiles.GetTile(squarePos);
@@ -114,11 +116,14 @@ public class Bomb : MonoBehaviour
         // if the tile has a bush on, it gets destroyed after 1 second
         if (bush != null)
         {
-            //COME BACK TO THIS DELAYYYYYYYYYYYYYYYY
-            //yield return new WaitForSeconds(1);
+            // delay until bush destroyed
+            yield return new WaitForSeconds(bushExplodeDelay);
             bushTiles.SetTile(squarePos, null);
         }
     }
+
+
+
 
 
     private void OnTriggerExit2D(Collider2D bombCheck)
