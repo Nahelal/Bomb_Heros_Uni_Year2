@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Bomb : MonoBehaviour
 {
@@ -20,7 +21,14 @@ public class Bomb : MonoBehaviour
     public float explosionTime = 1f;
     public int explosionLength = 1;
 
+    //bush tiles to explode and be destroyed + time delay
+    public Tilemap bushTiles;
+    public float bushExplodeDelay = 1f;
+
+    //tilemap check for layer
     public LayerMask tilemapLayerCheck;
+
+
 
     private void OnEnable()
     {
@@ -83,6 +91,8 @@ public class Bomb : MonoBehaviour
         //only spawns explosion tiles if there isnt a box collider in the way
         if (Physics2D.OverlapBox(position, Vector2.one / 2f, 0f, tilemapLayerCheck))
         {
+            //destroys bush tile if the explosion touched it 
+            RemoveBush(position);
             return;
         }
 
@@ -96,9 +106,19 @@ public class Bomb : MonoBehaviour
         Explode(position, direction, length - 1);
     }
 
+    private void RemoveBush(Vector2 position)
+    {
+        Vector3Int squarePos = bushTiles.WorldToCell(position);
+        TileBase bush = bushTiles.GetTile(squarePos);
 
-
-
+        // if the tile has a bush on, it gets destroyed after 1 second
+        if (bush != null)
+        {
+            //COME BACK TO THIS DELAYYYYYYYYYYYYYYYY
+            //yield return new WaitForSeconds(1);
+            bushTiles.SetTile(squarePos, null);
+        }
+    }
 
 
     private void OnTriggerExit2D(Collider2D bombCheck)
