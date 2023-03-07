@@ -23,7 +23,6 @@ public class Bomb : MonoBehaviour
 
     //bush tiles to explode and be destroyed + time delay
     public Tilemap bushTiles;
-    public float bushExplodeDelay = 1f;
 
     //tilemap check for layer
     public LayerMask tilemapLayerCheck;
@@ -92,7 +91,9 @@ public class Bomb : MonoBehaviour
         if (Physics2D.OverlapBox(position, Vector2.one / 2f, 0f, tilemapLayerCheck))
         {
             //destroys bush tile if the explosion touched it 
-            StartCoroutine("RemoveBush");
+            
+            StartCoroutine(RemoveBush(position));
+           // RemoveBush(position);
             return;
         }
 
@@ -108,7 +109,8 @@ public class Bomb : MonoBehaviour
 
 
 
-    IEnumerator RemoveBush(Vector2 position)
+    private IEnumerator RemoveBush(Vector2 position)
+    //private void RemoveBush(Vector2 position)
     {
         Vector3Int squarePos = bushTiles.WorldToCell(position);
         TileBase bush = bushTiles.GetTile(squarePos);
@@ -116,8 +118,9 @@ public class Bomb : MonoBehaviour
         // if the tile has a bush on, it gets destroyed after 1 second
         if (bush != null)
         {
-            // delay until bush destroyed
-            yield return new WaitForSeconds(bushExplodeDelay);
+            
+           // delay until bush destroyed
+            yield return new WaitForSeconds(1);
             bushTiles.SetTile(squarePos, null);
         }
     }
