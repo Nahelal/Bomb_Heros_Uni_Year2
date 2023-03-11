@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class Movement_1 : MonoBehaviour
+public class Movement_1 : NetworkBehaviour
 {
     //defining move speed, keys and character rigidbody
     public Rigidbody2D rigid_body { get; private set; }
@@ -18,6 +19,12 @@ public class Movement_1 : MonoBehaviour
     private void Awake()
     {
         rigid_body = GetComponent<Rigidbody2D>();
+    }
+
+    public override void OnNetworkSpawn()
+    {
+        //destroys player script if not the specific player
+        if (!IsOwner) Destroy(this);
     }
 
     private void Update()
