@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Unity.Netcode;
 
-public class Bomb : MonoBehaviour
+public class Bomb : NetworkBehaviour
 {
     //defining input key for placing bombs, player inventory for bombs, and how long it takes for them to detonate
     public GameObject playerBomb;
@@ -48,9 +49,34 @@ public class Bomb : MonoBehaviour
         position.x = Mathf.Round(position.x);
         position.y = Mathf.Round(position.y);
 
+
+
+
+
+
         //spawn bomb in map + reduce bombs player has remaining to 0
         GameObject bomb = Instantiate(playerBomb, position, Quaternion.identity);
+        
+        
+        //spawns bomb for other clients on the server as well
+        //this spawns like a gazillion bombs when u walk into them?!?!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! FIXXXX
+        // playerBomb.GetComponent<NetworkObject>().Spawn(true);
+
+
+       // NetworkObject BombNetworkObject = bomb.GetComponent<BombNetworkObject>();
+       // BombNetworkObject.Spawn(true);
+
+
+        //reduces local players bomb amount from 1 to 0
         bombsLeft = 0;
+
+        //to allow the joining players to be able to also spawn bombs
+       // [ServerRpc (RequireOwnership = false)]
+
+
+
+
+
 
         //waits 3 seconds before continuing to let the bomb explode and do damage
         yield return new WaitForSeconds(bombExplodeTime);

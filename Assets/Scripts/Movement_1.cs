@@ -16,6 +16,9 @@ public class Movement_1 : NetworkBehaviour
     public KeyCode left = KeyCode.A;
     public KeyCode right = KeyCode.D;
 
+    //list of player spawn locations
+   // [SerializeField] private List<Vector2> spawnPositionList;
+
     private void Awake()
     {
         rigid_body = GetComponent<Rigidbody2D>();
@@ -25,6 +28,10 @@ public class Movement_1 : NetworkBehaviour
     {
         //destroys player script if not the specific player
         if (!IsOwner) Destroy(this);
+
+        //spawns player at specific location depending on join order to the client
+        //transform.position = spawnPositionList[(int)OwnerClientId];
+
     }
 
     private void Update()
@@ -61,6 +68,22 @@ public class Movement_1 : NetworkBehaviour
         }
     }
 
+    //dont need this if working with client auth which im likely goin to do
+    private void PlayerMovementServerAuth()
+    {
+        //getting the player input to send to server
+    }
+    [ServerRpc(RequireOwnership = false) ]
+    private void PlayerMovementServerRpc()
+    {
+
+    }
+
+    //49:00
+    //https://www.youtube.com/watch?v=7glCsF9fv3s
+
+
+
     private void FixedUpdate()
     {
         //moves character in player input direction 
@@ -75,6 +98,8 @@ public class Movement_1 : NetworkBehaviour
         //updates direction of player depending on key press input every tick
         direction = NewDirection;
     }
+
+
 
     private void OnTriggerEnter2D(Collider2D explosionCollision)
     {

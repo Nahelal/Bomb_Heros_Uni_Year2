@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class ExplosionAnimation : MonoBehaviour
+public class ExplosionAnimation : NetworkBehaviour
 {
 
     private SpriteRenderer sprite_Renderer;
@@ -26,6 +27,12 @@ public class ExplosionAnimation : MonoBehaviour
     private void Awake()
     {
         sprite_Renderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Update()
+    {
+        //destroys player script if not the specific player
+        if (!IsOwner) Destroy(this);
     }
 
     private void  OnEnable()
