@@ -23,7 +23,7 @@ public class WinStateChecker : MonoBehaviour
             }
         }
 
-        if (playerCount <= 1)
+        if (playerCount >= 2)
         {
             // when playercount is less than/= 1, the game scene reloads and the game restarts
             Invoke(nameof(GameReset), 2.5f);

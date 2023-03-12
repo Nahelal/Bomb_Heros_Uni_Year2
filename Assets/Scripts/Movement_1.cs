@@ -36,6 +36,11 @@ public class Movement_1 : NetworkBehaviour
 
     private void Update()
     {
+        if (!IsServer)
+        {
+            return;
+        }
+
         //player movement set to whatever the corresponding movement keys are for the player
         if (Input.GetKey(up))
         {
@@ -99,35 +104,4 @@ public class Movement_1 : NetworkBehaviour
         direction = NewDirection;
     }
 
-
-
-    private void OnTriggerEnter2D(Collider2D explosionCollision)
-    {
-        if (explosionCollision.gameObject.layer ==LayerMask.NameToLayer("Explosion"))
-        {
-            //if player gets hit by explosion, they die
-            PlayerDeath();
-        }
-    }
-
-    private void PlayerDeath()
-    {
-        //disables player movement and bomb placement on death
-        enabled = false;
-        GetComponent<Bomb>().enabled = false;
-
-        //SHOULD MAYBE ROTATE PLAYER 90 DEGREES SINCE NO DEATH ANIM??
-
-        //delay for player death
-        Invoke(nameof(Dead), 1f);
-    }
-
-    private void Dead()
-    {
-        //player is fully disabled and gone after delay
-        gameObject.SetActive(false);
-
-        //refs winstatetriggered to check if the game has been won
-        FindObjectOfType<WinStateChecker>().WinStateTriggered();
-    }
 }
