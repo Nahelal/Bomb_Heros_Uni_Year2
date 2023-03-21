@@ -176,6 +176,11 @@ MonoBehaviour:
   down: 115
   left: 97
   right: 100
+  spawnPositionList:
+  - {x: -6, y: 7}
+  - {x: 12.122, y: -0.3520002}
+  - {x: 12.122, y: -12.349}
+  - {x: 0.13, y: -12.349}
 --- !u!114 &7964658028734693311
 MonoBehaviour:
   m_ObjectHideFlags: 0

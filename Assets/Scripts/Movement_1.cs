@@ -17,7 +17,7 @@ public class Movement_1 : NetworkBehaviour
     public KeyCode right = KeyCode.D;
 
     //list of player spawn locations
-   // [SerializeField] private List<Vector2> spawnPositionList;
+    [SerializeField] private List<Vector2> spawnPositionList;
 
     private void Awake()
     {
@@ -26,11 +26,18 @@ public class Movement_1 : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
-        //destroys player script if not the specific player
-        if (!IsOwner) Destroy(this);
-
         //spawns player at specific location depending on join order to the client
         //transform.position = spawnPositionList[(int)OwnerClientId];
+
+
+        //destroys player script if not the specific player
+        if (!IsOwner) Destroy(this);
+        else
+        {
+            transform.position = spawnPositionList[(int)OwnerClientId];
+        }
+
+
 
     }
 
