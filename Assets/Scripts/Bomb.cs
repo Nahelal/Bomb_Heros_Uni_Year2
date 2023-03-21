@@ -23,7 +23,7 @@ public class Bomb : NetworkBehaviour
     public int explosionLength = 1;
 
     //bush tiles to explode and be destroyed + time delay
-    public Tilemap bushTiles;
+    private Tilemap bushTiles;
 
     //tilemap check for layer
     public LayerMask tilemapLayerCheck;

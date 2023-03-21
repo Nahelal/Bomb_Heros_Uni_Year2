@@ -28,15 +28,11 @@ public class Movement_1 : NetworkBehaviour
     {
         //spawns player at specific location depending on join order to the client
         //transform.position = spawnPositionList[(int)OwnerClientId];
-
+        transform.position = spawnPositionList[(int)OwnerClientId];
 
         //destroys player script if not the specific player
         if (!IsOwner) Destroy(this);
-        else
-        {
-            transform.position = spawnPositionList[(int)OwnerClientId];
-        }
-
+    
 
 
     }
