@@ -27,19 +27,13 @@ public class Movement_1 : NetworkBehaviour
     public override void OnNetworkSpawn()
     {
         //spawns player at specific location depending on join order to the client
-        //transform.position = spawnPositionList[(int)OwnerClientId];
         transform.position = spawnPositionList[(int)OwnerClientId];
-
-        //destroys player script if not the specific player
-        if (!IsOwner) Destroy(this);
-    
-
 
     }
 
     private void Update()
     {
-        if (!IsServer)
+        if (!IsOwner)
         {
             return;
         }

@@ -6,6 +6,8 @@ using Unity.Netcode;
 
 public class Bomb : NetworkBehaviour
 {
+    //bombs
+
     //defining input key for placing bombs, player inventory for bombs, and how long it takes for them to detonate
     public GameObject playerBomb;
     public KeyCode placeBomb = KeyCode.Space;
@@ -15,6 +17,8 @@ public class Bomb : NetworkBehaviour
 
     public float bombExplodeTime = 3f;
 
+    //explosions
+
     //references the explosion triggered script to run the anims 
     public ExplosionTriggered explosionPrefab;
 
@@ -22,12 +26,13 @@ public class Bomb : NetworkBehaviour
     public float explosionTime = 1f;
     public int explosionLength = 1;
 
-    //bush tiles to explode and be destroyed + time delay
-    private Tilemap bushTiles;
+    //tilemaps
 
     //tilemap check for layer
     public LayerMask tilemapLayerCheck;
 
+    //bush tiles to explode and be destroyed + time delay
+    public Tilemap Bushes;
 
 
     private void OnEnable()
@@ -49,16 +54,12 @@ public class Bomb : NetworkBehaviour
         position.x = Mathf.Round(position.x);
         position.y = Mathf.Round(position.y);
 
-
-
-
-
-
         //spawn bomb in map + reduce bombs player has remaining to 0
         GameObject bomb = Instantiate(playerBomb, position, Quaternion.identity);
         
         
         //spawns bomb for other clients on the server as well
+
         //this spawns like a gazillion bombs when u walk into them?!?!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! FIXXXX
         // playerBomb.GetComponent<NetworkObject>().Spawn(true);
 
@@ -138,8 +139,8 @@ public class Bomb : NetworkBehaviour
     private IEnumerator RemoveBush(Vector2 position)
     //private void RemoveBush(Vector2 position)
     {
-        Vector3Int squarePos = bushTiles.WorldToCell(position);
-        TileBase bush = bushTiles.GetTile(squarePos);
+        Vector3Int squarePos = Bushes.WorldToCell(position);
+        TileBase bush = Bushes.GetTile(squarePos);
 
         // if the tile has a bush on, it gets destroyed after 1 second
         if (bush != null)
@@ -147,7 +148,7 @@ public class Bomb : NetworkBehaviour
             
            // delay until bush destroyed
             yield return new WaitForSeconds(1);
-            bushTiles.SetTile(squarePos, null);
+            Bushes.SetTile(squarePos, null);
         }
     }
 
