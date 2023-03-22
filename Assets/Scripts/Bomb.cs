@@ -42,6 +42,11 @@ public class Bomb : NetworkBehaviour
 
     private void Update()
     {
+        if (!IsOwner)
+        {
+            return;
+        }
+
         //if player has a bomb in their inventory when they press space bar, they drop a bomb on the map 
         if (bombsLeft > 0 && Input.GetKey(placeBomb))
            StartCoroutine (DropBomb());

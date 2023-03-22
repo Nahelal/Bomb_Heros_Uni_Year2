@@ -70,21 +70,6 @@ public class Movement_1 : NetworkBehaviour
         }
     }
 
-    //dont need this if working with client auth which im likely goin to do
-    private void PlayerMovementServerAuth()
-    {
-        //getting the player input to send to server
-    }
-    [ServerRpc(RequireOwnership = false) ]
-    private void PlayerMovementServerRpc()
-    {
-
-    }
-
-    //49:00
-    //https://www.youtube.com/watch?v=7glCsF9fv3s
-
-
 
     private void FixedUpdate()
     {
