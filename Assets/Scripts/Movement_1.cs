@@ -19,6 +19,10 @@ public class Movement_1 : NetworkBehaviour
     //list of player spawn locations
     [SerializeField] private List<Vector2> spawnPositionList;
 
+    //LIST OF PLAYER SKINS TO USE
+   // [SerializeField] private List<Sprite> playerSkins;
+   // public SpriteRenderer spriteRenderer;
+
     private void Awake()
     {
         rigid_body = GetComponent<Rigidbody2D>();
@@ -26,9 +30,11 @@ public class Movement_1 : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
-        //spawns player at specific location depending on join order to the client
+        //spawns player at specific location depending on join order to the server
         transform.position = spawnPositionList[(int)OwnerClientId];
 
+        //changes player sprite depending on join order to the server
+       // spriteRenderer.sprite = playerSkins[(int)OwnerClientId];
     }
 
     private void Update()
