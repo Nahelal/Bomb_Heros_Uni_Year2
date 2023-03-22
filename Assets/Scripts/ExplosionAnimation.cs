@@ -32,7 +32,7 @@ public class ExplosionAnimation : NetworkBehaviour
     private void Update()
     {
         //destroys player script if not the specific player
-        if (!IsOwner) Destroy(this);
+        //if (!IsOwner) Destroy(this);
     }
 
     private void  OnEnable()
