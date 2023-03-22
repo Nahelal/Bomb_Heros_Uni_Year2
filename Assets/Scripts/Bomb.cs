@@ -6,7 +6,7 @@ using Unity.Netcode;
 
 public class Bomb : NetworkBehaviour
 {
-    //bombs
+    //-----bombs-----
 
     //defining input key for placing bombs, player inventory for bombs, and how long it takes for them to detonate
     public GameObject playerBomb;
@@ -17,7 +17,7 @@ public class Bomb : NetworkBehaviour
 
     public float bombExplodeTime = 3f;
 
-    //explosions
+    //-----explosions-----
 
     //references the explosion triggered script to run the anims 
     public ExplosionTriggered explosionPrefab;
@@ -26,13 +26,15 @@ public class Bomb : NetworkBehaviour
     public float explosionTime = 1f;
     public int explosionLength = 1;
 
-    //tilemaps
+    //-----TILEMAP-----
 
     //tilemap check for layer
     public LayerMask tilemapLayerCheck;
 
     //bush tiles to explode and be destroyed + time delay
     public Tilemap Bushes;
+
+    //=========================================================================
 
 
     private void OnEnable()
@@ -49,8 +51,38 @@ public class Bomb : NetworkBehaviour
 
         //if player has a bomb in their inventory when they press space bar, they drop a bomb on the map 
         if (bombsLeft > 0 && Input.GetKey(placeBomb))
-           StartCoroutine (DropBomb());
+        {
+            // Send off the request to be executed on all clients
+            RequestDropBombServerRpc();
+
+            // drops bomb  locally immediately
+            StartCoroutine(DropBomb());
+        }
+
     }
+
+
+    //=====================================================
+
+    //client triggered for server execution
+    [ServerRpc]
+    private void RequestDropBombServerRpc()
+    {
+        SpawnBombClientRpc();
+    }
+
+    //server triggered for client execution
+    [ClientRpc]
+    private void SpawnBombClientRpc()
+    {
+        if (!IsOwner)
+        {
+            StartCoroutine(DropBomb());
+        }
+    }
+
+
+    //===============================================================
 
     private IEnumerator DropBomb()
     {
@@ -61,28 +93,9 @@ public class Bomb : NetworkBehaviour
 
         //spawn bomb in map + reduce bombs player has remaining to 0
         GameObject bomb = Instantiate(playerBomb, position, Quaternion.identity);
-        
-        
-        //spawns bomb for other clients on the server as well
-
-        //this spawns like a gazillion bombs when u walk into them?!?!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! FIXXXX
-        // playerBomb.GetComponent<NetworkObject>().Spawn(true);
-
-
-       // NetworkObject BombNetworkObject = bomb.GetComponent<BombNetworkObject>();
-       // BombNetworkObject.Spawn(true);
-
 
         //reduces local players bomb amount from 1 to 0
         bombsLeft = 0;
-
-        //to allow the joining players to be able to also spawn bombs
-       // [ServerRpc (RequireOwnership = false)]
-
-
-
-
-
 
         //waits 3 seconds before continuing to let the bomb explode and do damage
         yield return new WaitForSeconds(bombExplodeTime);
