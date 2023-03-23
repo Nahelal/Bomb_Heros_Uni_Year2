@@ -36,10 +36,16 @@ public class Bomb : NetworkBehaviour
 
     //=========================================================================
 
+    private void Start()
+    {
+        Bushes = GameObject.Find("Bushes").GetComponent<Tilemap>();
+    }
 
     private void OnEnable()
     {
         bombsLeft = bombMax;
+
+        //playerBomb.GetComponent<Bomb>().Bushes = Bushes;
     }
 
     private void Update()
